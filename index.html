@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Cotizador Mercari/Rakuma</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <style> body {font-family: "Montserrat", sans-serif;}
+
+    .cotizadormer { width: auto; background-color: #EC7063; 
+                color: #ffffff; border-radius: 5px; 
+                padding: 10px; margin: 50px auto; text-align: center; 
+                font-size: 13px; } 
+
+    table { width: 100%; } 
+    th, td { padding: 5px; } 
+    th { background-color: auto; } 
+    input[type="number"] { width: 50px; padding: 5px; border: none; border-radius: 3px; font-size: 12px; } </style>
+
+  <div class="cotizadormer">
+    <table><tbody><span><b>Cotizador Mercari y Rakuma:</b></span><tr><th></th><th></th></tr><tr><td>
+      <span>Precio en JPY: </span><input type="number" id="precioJPY" oninput="calcular()"><span> ¥</span></td><td><span>Precio en MXN: $</span><span id="precioMXN">0.00</span></td></tr></tbody></table></div>
+  <script>
+
+
+    function calcular()
+    {
+    var precioJPY = parseFloat(document.getElementById('precioJPY').value);
+      var tarifa = 300;
+      var cambio = 8;
+      var total= 0;
+
+
+      if(precioJPY <= 3000)
+      {
+          total = (precioJPY + tarifa) / cambio;
+      } 
+
+      if(precioJPY >= 3000) 
+      { 
+        total = ((precioJPY * 0.10)+precioJPY) / cambio; 
+      }
+
+      if(precioJPY >= 10000) 
+      { 
+        total = (((precioJPY+500)*0.05) +precioJPY )/ cambio; 
+      }
+
+      if(precioJPY >= 20000) 
+      { 
+        total = ((precioJPY *0.05) +precioJPY )/ cambio; 
+      }
+
+
+  document.getElementById('precioMXN').textContent = total.toFixed(2) ;
+  }
+  </script>
+
+
+  <script> 
+
+  </script>
+
+</div></section>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
